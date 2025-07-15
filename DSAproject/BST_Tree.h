@@ -5,13 +5,13 @@
 class BST_Tree
 {
 	vector <int> v;
-	
+
 public:
 	BST_Tree();
 	Hashtable h;
 	BST_Node *Root;
 	void add_Account(string, string, int, int, int);
-	BST_Node* BST_Tree::delete_Account(BST_Node *, int);
+	BST_Node* delete_Account(BST_Node *, int);
 	void withdraw(int,int);
 	void deposit(int,int);
 	void editaccount_byAdmin();

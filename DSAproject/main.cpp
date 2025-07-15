@@ -2,9 +2,7 @@
 # include "Hashtable.h"
 # include "BST_Tree.h"
 # include "admin.h"
-# include "staff.h"
 # include "customer.h"
-# include "string.h"
 
 void boot()
 {
@@ -43,7 +41,7 @@ int main()
 		}
 	}
 
-	
+
 	system("pause");
 	return 0;
 }

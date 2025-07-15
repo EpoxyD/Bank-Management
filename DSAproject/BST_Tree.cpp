@@ -108,7 +108,7 @@ void BST_Tree::withdraw(int accountno,int amount)
 	write.close();
 	remove("transaction.txt");
 	rename("temp.txt", "transaction.txt");
-	
+
 	update_server(Root);
 }
 void BST_Tree::deposit(int accountno,int amount)
@@ -193,13 +193,9 @@ void BST_Tree::transfer(int sender_accountno,int reciever_accountno,int sender_a
 	rename("temp.txt", "transaction.txt");
 
 
-	//  for reciever 
-
-
-	vector <int> data;
-	ifstream read;
+	//  for reciever
 	read.open("transaction.txt", ios::app);
-	int line = 0;
+	line = 0;
 	while (!read.eof())
 	{
 		read >> line;
@@ -214,7 +210,6 @@ void BST_Tree::transfer(int sender_accountno,int reciever_accountno,int sender_a
 	}
 	read.close();
 
-	ofstream write;
 	write.open("temp.txt", ios::app);
 	for (int i = 0; i < data.size(); i++)
 	{
@@ -227,7 +222,7 @@ void BST_Tree::transfer(int sender_accountno,int reciever_accountno,int sender_a
 }
 void BST_Tree::transaction_history()
 {
-    
+
 }
 void BST_Tree:: findMax(BST_Node* root)
 {
@@ -251,9 +246,9 @@ void BST_Tree::load_Server()
 	//cin.ignore();
 	while (!read.eof())
 	{
-		
-		
-		
+
+
+
 		getline(read, name);
 		getline(read, adress);
 		read >> accountno;
@@ -267,7 +262,7 @@ void BST_Tree::load_Server()
 		cout << accountno << endl;
 		cout << password << endl;
 		cout << balance << endl;
-		
+
 		*/
 		if (name!="" && adress != "" && accountno != 0 && password != 0 )
 		{
@@ -334,8 +329,8 @@ void BST_Tree:: update_server(BST_Node *root)
 		update_server(root->right);
 	}
 	write.close();
-	
-	
+
+
 }
 BST_Node* BST_Tree:: search (BST_Node* root, int accountno)
 {

@@ -1,6 +1,7 @@
 #pragma once
 # include "BST_Tree.h"
 # include "Hashtable.h"
+
 void admin()
 {
 	BST_Tree t;
