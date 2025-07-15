@@ -1,20 +1,20 @@
 #ifndef NODE_H_
 #define NODE_H_
 
-# include <iostream>
+#include <iostream>
 using namespace std;
-# include <fstream>
-# include <string>
-# include "Node_1.h"
+#include <fstream>
+#include <string>
+
+#include "Node_1.h"
 class Node
 {
-public:
-
-	Node * next;
-	Node_1 * pre;
-	int data;
-	Node();
-	Node(int);
+    public:
+        Node* next;
+        Node_1* pre;
+        int data;
+        Node();
+        Node(int);
 };
 
-#endif //NODE_H_
+#endif  // NODE_H_

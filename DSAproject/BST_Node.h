@@ -1,25 +1,24 @@
 #ifndef BST_NODE_H_
 #define BST_NODE_H_
 
-# include <iostream>
+#include <iostream>
 using namespace std;
-# include <vector>
-# include <fstream>
-# include <string>
+#include <fstream>
+#include <string>
+#include <vector>
 class BST_Node
 {
-public:
-	BST_Node * left;
-	BST_Node * right;
-	string name;
-	string adress;
-	int account_number;
-	int password;
-	int balance;
+    public:
+        BST_Node* left;
+        BST_Node* right;
+        string name;
+        string adress;
+        int account_number;
+        int password;
+        int balance;
 
-	BST_Node();
-	BST_Node(string, string, int, int, int);
-
+        BST_Node();
+        BST_Node(string, string, int, int, int);
 };
 
-#endif //BST_NODE_H_
+#endif  // BST_NODE_H_
