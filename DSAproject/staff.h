@@ -1,4 +1,6 @@
-#pragma once
+#ifndef STAFF_H_
+#define STAFF_H_
+
 # include "BST_Tree.h"
 # include "Hashtable.h"
 void staff()
@@ -57,3 +59,5 @@ void staff()
 	}
 
 }
+
+#endif //STAFF_H_

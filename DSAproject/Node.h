@@ -1,4 +1,6 @@
-#pragma once
+#ifndef NODE_H_
+#define NODE_H_
+
 # include <iostream>
 using namespace std;
 # include <fstream>
@@ -14,3 +16,5 @@ public:
 	Node();
 	Node(int);
 };
+
+#endif //NODE_H_

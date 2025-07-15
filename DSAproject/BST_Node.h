@@ -1,10 +1,12 @@
-#pragma once
+#ifndef BST_NODE_H_
+#define BST_NODE_H_
+
 # include <iostream>
 using namespace std;
 # include <vector>
 # include <fstream>
 # include <string>
-class BST_Node 
+class BST_Node
 {
 public:
 	BST_Node * left;
@@ -17,5 +19,7 @@ public:
 
 	BST_Node();
 	BST_Node(string, string, int, int, int);
-	
+
 };
+
+#endif //BST_NODE_H_

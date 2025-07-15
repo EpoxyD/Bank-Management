@@ -1,12 +1,13 @@
-
-
-HEADERS=$(wildcard DSAproject/*.h)
 SOURCES=$(wildcard DSAproject/*.cpp)
 
-all: DSAproject
+all: Release
 
 Debug: ${SOURCES}
 	@ mkdir -p $@
 	@ g++ -g ${^} -o $@/DSAproject
 
-.phony: all
+Release: ${SOURCES}
+	@ mkdir -p $@
+	@ g++ -O3 ${^} -o $@/DSAproject
+
+.phony: Debug Release

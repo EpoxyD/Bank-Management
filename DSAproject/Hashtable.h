@@ -1,4 +1,6 @@
-#pragma once
+#ifndef HASHTABLE_H_
+#define HASHTABLE_H_
+
 # include "Node.h"
 # include "Node_1.h"
 
@@ -15,3 +17,5 @@ public:
 	void displayPasswords();
 	void delete_password(int);
 };
+
+#endif //HASHTABLE_H_

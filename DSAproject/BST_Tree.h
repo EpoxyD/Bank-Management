@@ -1,4 +1,6 @@
-#pragma once
+#ifndef BST_TREE_H_
+#define BST_TREE_H_
+
 # include "BST_Node.h"
 # include "Hashtable.h"
 # include <stdio.h>
@@ -23,3 +25,5 @@ public:
 	BST_Node* search(BST_Node*,int);
 	void printoinfo(BST_Node*);
 };
+
+#endif //BST_TREE_H_

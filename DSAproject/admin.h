@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ADMIN_H_
+#define ADMIN_H_
+
 # include "BST_Tree.h"
 # include "Hashtable.h"
 
@@ -66,3 +68,5 @@ void admin()
 		}
 	}
 }
+
+#endif // ADMIN_H_
