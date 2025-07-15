@@ -5,13 +5,15 @@
 
 #include "BST_Node.h"
 #include "Hashtable.h"
+
 class BST_Tree
 {
+    private:
         vector<int> v;
+        Hashtable h;
 
     public:
         BST_Tree();
-        Hashtable h;
         BST_Node *Root;
         void add_Account(string, string, int, int, int);
         BST_Node *delete_Account(BST_Node *, int);

@@ -1,6 +1,9 @@
-#pragma once
+#ifndef CUSTOMER_H_
+#define CUSTOMER_H_
+
 #include "BST_Tree.h"
 #include "Hashtable.h"
+
 void customer()
 {
     BST_Tree t;
@@ -37,3 +40,5 @@ void customer()
         }
     }
 }
+
+#endif

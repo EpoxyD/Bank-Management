@@ -9,6 +9,7 @@ Node::Node()
     pre = nullptr;
     data = 0;
 }
+
 Node::Node(int d)  // Parameterized Constructor
 {
     next = nullptr;

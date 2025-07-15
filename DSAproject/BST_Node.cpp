@@ -11,8 +11,8 @@ BST_Node::BST_Node()
     password = 0;
     balance = 0;
 }
-BST_Node::BST_Node(string name, string adress, int accountno, int password,
-                   int balance)
+
+BST_Node::BST_Node(std::string name, std::string adress, int accountno, int password, int balance)
 {
     left = nullptr;
     right = nullptr;

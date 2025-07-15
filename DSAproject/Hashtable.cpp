@@ -5,6 +5,7 @@ using namespace std;
 #include "Hashtable.h"
 
 Hashtable::Hashtable() { start = nullptr; }
+
 void Hashtable::starthash()
 {
     for (int i = 0; i < 12; i++)
@@ -26,6 +27,7 @@ void Hashtable::starthash()
     }
     loadhashtable();
 }
+
 void Hashtable::add(int a, int p)
 {
     static int i = 0;
@@ -45,6 +47,7 @@ void Hashtable::add(int a, int p)
 
     starthash();
 }
+
 bool Hashtable::match(int a, int p)
 {
     bool flag = false;
@@ -66,6 +69,7 @@ bool Hashtable::match(int a, int p)
     }
     return flag;
 }
+
 void Hashtable::display()
 {
     Node *current = start;
@@ -75,6 +79,7 @@ void Hashtable::display()
         current = current->next;
     }
 }
+
 void Hashtable::loadhashtable()
 {
     int acc = 0, r, pass;
@@ -121,6 +126,7 @@ void Hashtable::loadhashtable()
     }
     read.close();
 }
+
 void Hashtable::displayPasswords()
 {
     starthash();
@@ -137,6 +143,7 @@ void Hashtable::displayPasswords()
         c = c->next;
     }
 }
+
 void Hashtable::delete_password(int accountno)
 {
     ifstream read;

@@ -11,6 +11,7 @@ void boot()
     H.starthash();
     T.load_Server();
 }
+
 int main()
 {
     void boot();

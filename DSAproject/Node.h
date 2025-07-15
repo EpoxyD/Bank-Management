@@ -7,6 +7,7 @@ using namespace std;
 #include <string>
 
 #include "Node_1.h"
+
 class Node
 {
     public:

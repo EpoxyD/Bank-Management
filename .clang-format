@@ -1,6 +1,8 @@
 ---
 BasedOnStyle: Google
 IndentWidth: 4
+
+AlignOperands: Align
 BreakBeforeBraces: Custom
 BraceWrapping:
     AfterCaseLabel: true
@@ -19,5 +21,8 @@ BraceWrapping:
     IndentBraces: false
     SplitEmptyRecord: false
     SplitEmptyFunction: false
+ColumnLimit: 200
 IndentAccessModifiers: true
+InsertNewlineAtEOF: true
+SeparateDefinitionBlocks: Always
 ---
