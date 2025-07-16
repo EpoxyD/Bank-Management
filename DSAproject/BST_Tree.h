@@ -2,9 +2,21 @@
 #define BST_TREE_H_
 
 #include <stdio.h>
+#include <vector>
 
-#include "BST_Node.h"
+#include "account.h"
 #include "Hashtable.h"
+
+class BST_Node
+{
+    public:
+        BST_Node* left;
+        BST_Node* right;
+        Account account;
+
+        BST_Node();
+        BST_Node(Account account);
+};
 
 class BST_Tree
 {
@@ -14,8 +26,8 @@ class BST_Tree
 
     public:
         BST_Tree();
-        BST_Node *Root;
-        void add_Account(string, string, int, int, int);
+        BST_Node *Root = nullptr;
+        void add_Account(std::string, std::string, int, int, int);
         BST_Node *delete_Account(BST_Node *, int);
         void withdraw(int, int);
         void deposit(int, int);

@@ -1,18 +1,34 @@
 
 #include "BST_Tree.h"
+#include "account.h"
 
-#include "Hashtable.h"
+using namespace std;
+
+BST_Node::BST_Node()
+{
+    left = nullptr;
+    right = nullptr;
+    account = Account();
+}
+
+BST_Node::BST_Node(Account account)
+{
+    this->left = nullptr;
+    this->right = nullptr;
+    this->account = account;
+}
 
 BST_Tree::BST_Tree() {}
 
-void BST_Tree::add_Account(string name, string adress, int accountno, int password, int balance)
+void BST_Tree::add_Account(string name, string address, int accountno, int password, int balance)
 {
+    Account account = Account(name, address, accountno, password, balance);
     h.add(accountno, password);
     ofstream write;
     write.open("server.txt", ios::app);
-    write << name << endl << adress << endl << accountno << endl << password << endl << balance << endl;
+    write << account.toString() << endl;
     write.close();
-    BST_Node* temp = new BST_Node(name, adress, accountno, password, balance);
+    BST_Node* temp = new BST_Node(account);
 
     BST_Node* current = Root;
     if (Root == nullptr)
@@ -23,7 +39,7 @@ void BST_Tree::add_Account(string name, string adress, int accountno, int passwo
     {
         while (true)
         {
-            if (accountno < current->account_number)
+            if (accountno < current->account.account_number)
             {
                 if (current->left == nullptr)
                 {
@@ -33,7 +49,7 @@ void BST_Tree::add_Account(string name, string adress, int accountno, int passwo
                 current = current->left;
             }
 
-            if (accountno > current->account_number)
+            if (accountno > current->account.account_number)
             {
                 if (current->right == nullptr)
                 {
@@ -48,20 +64,20 @@ void BST_Tree::add_Account(string name, string adress, int accountno, int passwo
 
 BST_Node* BST_Tree::delete_Account(BST_Node* root, int accountno)
 {
-    // cout << "accountno"<<root->account_number;
+    // cout << "accountno"<<root->account.account_number;
     if (root == nullptr)
         cout << "it seems that Tree is empty OR You have entered wrong data" << endl;
-    else if (accountno < root->account_number)
+    else if (accountno < root->account.account_number)
         root->left = delete_Account(root->left, accountno);
-    else if (accountno > Root->account_number)
+    else if (accountno > root->account.account_number)
         root->right = delete_Account(root->right, accountno);
     else
     {
         if (root->left && root->right)
         {
             findMax(root->left);
-            root->account_number = v.back();
-            root->left = delete_Account(root->left, root->account_number);
+            root->account.account_number = v.back();
+            root->left = delete_Account(root->left, root->account.account_number);
         }
         else
         {
@@ -81,7 +97,7 @@ void BST_Tree::withdraw(int accountno, int amount)
 {
     load_Server();
     BST_Node* temp = search(Root, accountno);
-    temp->balance = temp->balance - amount;
+    temp->account.balance = temp->account.balance - amount;
     vector<int> data;
     ifstream read;
     read.open("transaction.txt", ios::app);
@@ -117,7 +133,7 @@ void BST_Tree::deposit(int accountno, int amount)
 {
     load_Server();
     BST_Node* temp = search(Root, accountno);
-    temp->balance = temp->balance + amount;
+    temp->account.balance = temp->account.balance + amount;
 
     vector<int> data;
     ifstream read;
@@ -156,9 +172,9 @@ void BST_Tree::transfer(int sender_accountno, int reciever_accountno, int sender
 {
     // happening in tree
     BST_Node* sender = search(Root, sender_accountno);
-    sender->balance = sender->balance - sender_amount;
+    sender->account.balance = sender->account.balance - sender_amount;
     BST_Node* reciever = search(Root, reciever_accountno);
-    reciever->balance = reciever->balance + sender_amount;
+    reciever->account.balance = reciever->account.balance + sender_amount;
     update_server(Root);
 
     // Now happening in the transacton file
@@ -226,7 +242,7 @@ void BST_Tree::findMax(BST_Node* root)
     if (root)
     {
         findMax(root->left);
-        v.push_back(root->account_number);
+        v.push_back(root->account.account_number);
         findMax(root->right);
     }
 }
@@ -262,7 +278,7 @@ void BST_Tree::load_Server()
         if (name != "" && adress != "" && accountno != 0 && password != 0)
         {
             // cout << "enter hua" << endl;
-            BST_Node* temp = new BST_Node(name, adress, accountno, password, balance);
+            BST_Node* temp = new BST_Node(Account(name, adress, accountno, password, balance));
             BST_Node* current = Root;
             if (Root == nullptr)
             {
@@ -272,7 +288,7 @@ void BST_Tree::load_Server()
             {
                 while (true)
                 {
-                    if (accountno < current->account_number)
+                    if (accountno < current->account.account_number)
                     {
                         if (current->left == nullptr)
                         {
@@ -282,7 +298,7 @@ void BST_Tree::load_Server()
                         current = current->left;
                     }
 
-                    if (accountno > current->account_number)
+                    if (accountno > current->account.account_number)
                     {
                         if (current->right == nullptr)
                         {
@@ -291,7 +307,7 @@ void BST_Tree::load_Server()
                         }
                         current = current->right;
                     }
-                    if (accountno == current->account_number)
+                    if (accountno == current->account.account_number)
                     {
                         break;
                     }
@@ -315,11 +331,11 @@ void BST_Tree::update_server(BST_Node* root)
     if (root)
     {
         update_server(root->left);
-        write << root->name << endl;
-        write << root->adress << endl;
-        write << root->account_number << endl;
-        write << root->password << endl;
-        write << root->balance << endl;
+        write << root->account.name << endl;
+        write << root->account.address << endl;
+        write << root->account.account_number << endl;
+        write << root->account.password << endl;
+        write << root->account.balance << endl;
         update_server(root->right);
     }
     write.close();
@@ -329,9 +345,9 @@ BST_Node* BST_Tree::search(BST_Node* root, int accountno)
 {
     if (root == nullptr)
         return (nullptr);
-    else if (accountno < root->account_number)
+    else if (accountno < root->account.account_number)
         return (search(root->left, accountno));
-    else if (accountno > root->account_number)
+    else if (accountno > root->account.account_number)
         return (search(root->right, accountno));
     return (root);
 }
@@ -341,11 +357,11 @@ void BST_Tree::printoinfo(BST_Node* root)
     if (root)
     {
         printoinfo(root->left);
-        cout << root->name << endl;
-        cout << root->adress << endl;
-        cout << root->account_number << endl;
-        cout << root->password << endl;
-        cout << root->balance << endl;
+        cout << root->account.name << endl;
+        cout << root->account.address << endl;
+        cout << root->account.account_number << endl;
+        cout << root->account.password << endl;
+        cout << root->account.balance << endl;
         printoinfo(root->right);
     }
 }

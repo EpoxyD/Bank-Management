@@ -1,10 +1,11 @@
 #include <iostream>
-using namespace std;
 #include <vector>
+
+using namespace std;
 
 #include "Hashtable.h"
 
-Hashtable::Hashtable() { start = nullptr; }
+Hashtable::Hashtable() { this->start = nullptr; }
 
 void Hashtable::starthash()
 {

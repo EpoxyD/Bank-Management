@@ -2,7 +2,6 @@
 #define NODE_H_
 
 #include <iostream>
-using namespace std;
 #include <fstream>
 #include <string>
 

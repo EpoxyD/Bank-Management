@@ -4,17 +4,31 @@
 #include "admin.h"
 #include "customer.h"
 
+using namespace std;
+
 void boot()
 {
     Hashtable H;
+
+    cout << H.start << endl;
+
     BST_Tree T;
     H.starthash();
     T.load_Server();
 }
 
+enum role
+{
+    ROLE_ADMIN = 1,
+    ROLE_STAFF = 2,
+    ROLE_CUSTOMER = 3,
+};
+
 int main()
 {
     void boot();
+
+    Customer c = Customer();
 
     int condition = 0;
     while (true)
@@ -24,22 +38,20 @@ int main()
         cout << "2-STAFF" << endl;
         cout << "3-CUSTOMER" << endl;
         cin >> condition;
-        if (condition == 1)
+        switch ((enum role)condition)
         {
-            admin();
-        }
-        if (condition == 2)
-        {
-        }
-        if (condition == 3)
-        {
-            customer();
-        }
-        else
-        {
-            cout << "Option must be 1, 2 or 3." << endl;
-            cout << "Received: " << condition << endl;
-            break;
+            case ROLE_ADMIN:
+                admin();
+                break;
+            case ROLE_STAFF:
+                break;
+            case ROLE_CUSTOMER:
+                customer();
+                break;
+            default:
+                cout << "Option must be 1, 2 or 3." << endl;
+                cout << "Received: " << condition << endl;
+                break;
         }
     }
 

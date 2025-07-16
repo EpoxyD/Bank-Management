@@ -1,6 +1,8 @@
 #ifndef ADMIN_H_
 #define ADMIN_H_
 
+using namespace std;
+
 #include "BST_Tree.h"
 #include "Hashtable.h"
 

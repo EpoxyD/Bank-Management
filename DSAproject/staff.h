@@ -1,6 +1,8 @@
 #ifndef STAFF_H_
 #define STAFF_H_
 
+using namespace std;
+
 #include "BST_Tree.h"
 #include "Hashtable.h"
 
